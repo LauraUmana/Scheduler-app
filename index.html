@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Bootstrap-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!--stylesheet-->
+
+</head>
+
+<body ng-app="schedulerApp">
+	<div class="container">
+	<div ng-controller="SchedulerController as schedulerCtrl">
+		<div class="row text-center">
+			<h1>My Wonderful Planner</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-md-7 text-center">
+				<h3>Hello! I hope yesterday was a good day. Tell me how today looks like.</h3>
+			</div>
+			<div class="col-md-2 col-md-offset-1">
+				<form name="addTaskForm" ng-submit="addNewTask()">
+				<fieldset>
+					<label for="task">Task:<label>
+					<input type="text" id="task" placeholder="Enter task here" ng-model="user.task">
+					<label for="time">Time:</label>
+					<input type="text" id="time" placeholder="1:00 AM/PM" ng-model="user.time">
+					<label for ="duration">How Long?</label>
+					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="user.duration">
+					<input type="submit" value="Submit Task">
+				</fieldset>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<table class="table table-bordered">
+				<thead class="text-center">
+					<tr>
+						<th>Time</th>
+						<th>Duration</th>
+						<th>Task</th>
+						
+				</thead>
+				<tbody>
+				<tr ng-repeat="plan in plans">
+					<td class="plan-time">{{plan.time}}</td>
+					<td class="plan-duration">{{plan.duration}} minutes</td>
+					<td class="plan-task">{{plan.task}}</td>
+					
+				</tr>
+			</tbody>
+			</table>
+			</div>
+		</div>
+
+			<!--angular-->
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
