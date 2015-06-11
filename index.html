@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--Bootstrap-->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendors/css/bootstrap.min.css">
 	<!--stylesheet-->
 
 </head>
@@ -20,12 +20,12 @@
 		<div class="row">
 				<h3>Hello! I hope yesterday was a good day. Tell me how today looks like.</h3>
 			
-				<form name="addTaskForm" ng-submit="addNewTask()">
+				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
 				<fieldset>
 					<label for="task">Task:<label>
-					<input type="text" id="task" placeholder="Enter task here" ng-model="user.task">
+					<input type="text" id="task" placeholder="Enter task here" ng-model="scheduler.user.task">
 					<label for="time">Time:</label>
-					<select class="newTime" ng-model="user.hours">
+					<select class="newTime" ng-model="scheduler.user.hours">
 						<option>01</option>
 						<option>02</option>
 						<option>03</option>
@@ -39,18 +39,18 @@
 						<option>11</option>
 						<option>12</option>
 					</select>
-					<select class="newTime" ng-model="user.minutes">
+					<select class="newTime" ng-model="scheduler.user.minutes">
 						<option>00</option>
 						<option>15</option>
 						<option>30</option>
 						<option>45</option>
 					</select>
-					<select class="newTime" ng-model="user.meridiem">
+					<select class="newTime" ng-model="scheduler.user.meridiem">
 						<option>am</option>
 						<option>pm</option>
 					</select>
 					<label for ="duration">How Long?</label>
-					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="user.duration">
+					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="scheduler.user.duration">
 					<input type="submit" value="Submit Task">
 				</fieldset>
 				</form>
@@ -66,7 +66,7 @@
 						<th>Done?</th>
 				</thead>
 				<tbody>
-				<tr ng-repeat="plan in plans">
+				<tr ng-repeat="plan in scheduler.plans">
 					<td class="plan-time">{{plan.displayTime}}</td>
 					<td class="plan-duration">{{plan.duration}} minutes</td>
 					<td class="plan-task">{{plan.task}}</td>
@@ -78,7 +78,7 @@
 		</div>
 
 			<!--angular-->
-	<script src="js/angular.min.js"></script>
+	<script src="vendors/js/angular.min.js"></script>
 	<script src="js/app.js"></script>
 	<!--<script src="js/moment.js"></script>-->
 </body>
