@@ -6,7 +6,8 @@ angular.module('schedulerApp', [])
 .controller('SchedulerController', schedulerCtrl);
 
 	function schedulerCtrl() {
-		this.plans = [
+		var that = this;
+		that.plans = [
 		{
 			displayTime: '05:00pm',
 			duration: '30',
@@ -20,15 +21,11 @@ angular.module('schedulerApp', [])
 			standardTime: '1800'
 		},
 		];
-
-		var clicked = true;
-	}
 	
-	schedulerCtrl.prototype.addNewTask = function() {
+	
+	function addNewTask() {
 		var that = this;
-
-		//var cat = that.user.displayTime;
-
+		//This alerts the user when they enter the same time twice
 		var timeFound = false; 
 			for( var i = 0; i < that.plans.length; i++) {
 				console.log(that.user.displayTime);
@@ -40,7 +37,7 @@ angular.module('schedulerApp', [])
 				if(timeFound) return;
 			}
 
-		
+		//creates the local time into military time
 		var input = that.user.displayTime;
 		var hours = input.substr(0,2);
 		var hoursInt = parseInt(hours);
@@ -58,77 +55,21 @@ angular.module('schedulerApp', [])
 			console.log(input)
 
 
-		
+		//pushes the user input into the plans array
 		that.user.standardTime = input;
 		that.plans.push(that.user);
 		that.user = '';
 		console.log(that.plans);
-
-}
-schedulerCtrl.prototype.start = function() {
-
-	this.clicked = !this.clicked;
-
 }
 
-	/*schedulerCtrl.prototype.change = function() {
-		var that= this;
-		var inputTime = that.user.displayTime;
-		var hours = parseInt(inputTime.substr(0,2));
-		console.log(hours);
-		if(inputTime.indexOf('am') && hours == 12) {
-			inputTime = inputTime.replace('12', '0');
-		}
-		if(inputTime.indexOf('pm') && hours < 12) {
-			inputTime = inputTime.replace(hours, (hours + 12));
-		}
-		inputTime = inputTime.replace(':', '').trim();
-		return parseInt(inputTime.replace(/(am|pm)/, ''));
-		console.log(inputTime);
+	//var clicked = false;
+	function ping() {
+		var that = this;
+		console.log('before', that.clicked)
+		that.clicked = !that.clicked;
+		console.log('after', that.clicked)
 	}
-
-
-
-
-		/*var hours = parseInt(cat.substr(0,2));
-		if(cat.indexOf('am') && hours == 12){
-			cat = cat.replace('12', '00');
-			console.log(cat)
-		}
-		if(cat.indexOf('pm') && hours < 12) {
-			cat = cat.replace(hours, (hours + 12));
-		}
-		cat = cat.replace(/(am|pm)/, '');
-		console.log(cat)
-	}*/
-
-		
-		/*var convert = function(inputTime) {
-			var hours = parseInt(inputTime.substr(0,2));
-			console.log(hours);
-			if(inputTime.indexOf('am') && hours == 12) {
-				inputTime = inputTime.replace(		'12', '0');
-			}
-			if(inputTime.indexOf('pm') && hours < 12) {
-				inputTime = inputTime.replace(hours, (hours + 12));
-			}
-			inputTime = inputTime.replace(':', '').trim();
-			return parseInt(inputTime.replace(/(am|pm)/, ''));
-				console.log(inputTime);
-		}*/
-
-		
-		/*$scope.plans.push($scope.user);
-		$scope.user = '';
-		console.log($scope.plans);
-	}
-		$scope.plans.sort(function (a, b) {
-			console.log(a);
-			if (a > b) {
-				return 1;
-			}
-			if (a < b) {
-				return -1;
-			}
-		});
-});*/
+	that.addNewTask = addNewTask;
+	that.ping = ping;
+	that.clicked = false;
+}
