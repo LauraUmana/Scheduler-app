@@ -22,33 +22,10 @@
 			
 				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
 				<fieldset>
-					<label for="task">Task:<label>
+					<label for="task">Task:</label>
 					<input type="text" id="task" placeholder="Enter task here" ng-model="scheduler.user.task">
 					<label for="time">Time:</label>
-					<select class="newTime" ng-model="scheduler.user.hours">
-						<option>01</option>
-						<option>02</option>
-						<option>03</option>
-						<option>04</option>
-						<option>05</option>
-						<option>06</option>
-						<option>07</option>
-						<option>08</option>
-						<option>09</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-					</select>
-					<select class="newTime" ng-model="scheduler.user.minutes">
-						<option>00</option>
-						<option>15</option>
-						<option>30</option>
-						<option>45</option>
-					</select>
-					<select class="newTime" ng-model="scheduler.user.meridiem">
-						<option>am</option>
-						<option>pm</option>
-					</select>
+					<input class="newTime" ng-model="scheduler.user.displayTime">
 					<label for ="duration">How Long?</label>
 					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="scheduler.user.duration">
 					<input type="submit" value="Submit Task">
@@ -66,11 +43,11 @@
 						<th>Done?</th>
 				</thead>
 				<tbody>
-				<tr ng-repeat="plan in scheduler.plans">
+				<tr ng-repeat="plan in scheduler.plans | orderBy:'standardTime'">
 					<td class="plan-time">{{plan.displayTime}}</td>
 					<td class="plan-duration">{{plan.duration}} minutes</td>
 					<td class="plan-task">{{plan.task}}</td>
-					<td><button>Yes</button></td>
+					<td><button ng-class="{'btn-warning': !clicked, 'btn-danger': clicked}" ngClick="start()">Yes</button></td>
 				</tr>
 			</tbody>
 			</table>
