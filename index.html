@@ -18,6 +18,12 @@
 		</div>
 		<br>
 		<div ng-controller="SchedulerController as scheduler">
+			<div class="live-preview row text-center">
+				<p>Task:{{scheduler.user.task}}</p>
+				<p>Time:{{scheduler.user.displayTime}}</p>
+				<p>Duration:{{scheduler.user.duration}} minutes</p>
+			</div>
+			<br>
 			<div class="row text-center">
 				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
 					<label for="task">Task:</label>
@@ -28,13 +34,6 @@
 					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="scheduler.user.duration">
 					<input type="submit" class="btn-primary" value="Submit Task">
 				</form>
-			</div>
-
-			<div class="live-preview row text-center">
-				<h3>Please take a look below to make sure that you wrote your task correctly and then submit.</h3>
-					<spanss>{{scheduler.user.task}}</span>
-					<span>{{scheduler.user.displayTime}}</span>
-					<span>{{scheduler.user.duration}} minutes</span>
 			</div>
 			
 			<br>
