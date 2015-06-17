@@ -21,7 +21,7 @@ angular.module('schedulerApp', [])
 			standardTime: '1800'
 		},
 		];
-	
+		
 	
 	function addNewTask() {
 		var that = this;
@@ -62,14 +62,19 @@ angular.module('schedulerApp', [])
 		console.log(that.plans);
 }
 
-	//var clicked = false;
-	function ping() {
+	/*function ping() {
+
+		this.clicked = !this.clicked;
+	}*/
+	//makes the done button turn green when clicked
+
+	/*function selectBtn(index) {
 		var that = this;
-		console.log('before', that.clicked)
-		that.clicked = !that.clicked;
-		console.log('after', that.clicked)
-	}
+		that.activeBtn = index;
+	}*/
 	that.addNewTask = addNewTask;
-	that.ping = ping;
-	that.clicked = false;
+	//that.ping = ping;
+	//that.selectBtn = selectBtn;
+
 }
+

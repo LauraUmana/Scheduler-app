@@ -7,21 +7,20 @@
 	<!--Bootstrap-->
 	<link rel="stylesheet" href="vendors/css/bootstrap.min.css">
 	<!--stylesheet-->
-
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body ng-app="schedulerApp">
 	<div class="container">
-	<div ng-controller="SchedulerController as scheduler">
 		<div class="row text-center">
 			<h1>My Wonderful Planner</h1>
 		</div>
 
-		<div class="row">
-				<h3>Hello! I hope yesterday was a good day. Tell me how today looks like.</h3>
-			
+		<div ng-controller="SchedulerController as scheduler">
+			<div class="row text-center">
+				<h2>Hello! I hope yesterday was a good day. Tell me how today looks like.</h2>
+					
 				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
-				<fieldset>
 					<label for="task">Task:</label>
 					<input type="text" id="task" placeholder="Enter task here" ng-model="scheduler.user.task">
 					<label for="time">Time:</label>
@@ -29,31 +28,38 @@
 					<label for ="duration">How Long?</label>
 					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="scheduler.user.duration">
 					<input type="submit" value="Submit Task">
-				</fieldset>
 				</form>
+			</div>
+
+			<div class="live-preview row text-center">
+				<h3>Your preview before you submit</h3>
+					<spanss>{{scheduler.user.task}}</span>
+					<span>{{scheduler.user.displayTime}}</span>
+					<span>{{scheduler.user.duration}} minutes</span>
+			</div>
 			
 
-		<div class="row">
-			<table class="table table-bordered">
-				<thead class="text-center">
-					<tr>
-						<th>Time</th>
-						<th>Duration</th>
-						<th>Task</th>
-						<th>Done?</th>
-				</thead>
-				<tbody>
-				<tr ng-repeat="plan in scheduler.plans | orderBy:'standardTime'">
-					<td class="plan-time">{{plan.displayTime}}</td>
-					<td class="plan-duration">{{plan.duration}} minutes</td>
-					<td class="plan-task">{{plan.task}}</td>
-					<td><button  ng-class="{'btn-primary': !scheduler.clicked, 'btn-success': scheduler.clicked}" ng-click="scheduler.ping()">Yes</button></td>
-				</tr>
-			</tbody>
-			</table>
+			<div class="row">
+				<table class="table table-bordered">
+					<thead class="text-center">
+						<tr>
+							<th>Time</th>
+							<th>Duration</th>
+							<th>Task</th>
+							<th>Done?</th>
+					</thead>
+					<tbody>
+					<tr ng-repeat="plan in scheduler.plans | orderBy:'standardTime'">
+						<td class="plan-time">{{plan.displayTime}}</td>
+						<td class="plan-duration">{{plan.duration}} minutes</td>
+						<td class="plan-task">{{plan.task}}</td>
+						<td><button type="button" ng-class="{'btn-primary': !plan.clicked, 'btn-success': plan.clicked}" ng-click="plan.clicked = !plan.clicked">Yes</button></td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-
+	</div>
 			<!--angular-->
 	<script src="vendors/js/angular.min.js"></script>
 	<script src="js/app.js"></script>
