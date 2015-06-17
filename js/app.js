@@ -9,13 +9,13 @@ angular.module('schedulerApp', [])
 		var that = this;
 		that.plans = [
 		{
-			displayTime: '05:00pm',
+			displayTime: '05:00 pm',
 			duration: '30',
 			task: 'Team meeting',
 			standardTime: '1700'
 		},
 		{
-			displayTime: '06:00pm',
+			displayTime: '06:00 pm',
 			duration: '60',
 			task: 'Watch a js talk online',
 			standardTime: '1800'
