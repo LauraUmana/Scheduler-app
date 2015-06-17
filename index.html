@@ -14,12 +14,11 @@
 	<div class="container">
 		<div class="row text-center">
 			<h1>My Wonderful Planner</h1>
+			<h2>Hello! I hope yesterday was a good day. Tell me how today looks like.</h2>
 		</div>
-
+		<br>
 		<div ng-controller="SchedulerController as scheduler">
 			<div class="row text-center">
-				<h2>Hello! I hope yesterday was a good day. Tell me how today looks like.</h2>
-					
 				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
 					<label for="task">Task:</label>
 					<input type="text" id="task" placeholder="Enter task here" ng-model="scheduler.user.task">
@@ -32,16 +31,16 @@
 			</div>
 
 			<div class="live-preview row text-center">
-				<h3>Your preview before you submit</h3>
+				<h3>Please take a look below to make sure that you wrote your task correctly and then submit.</h3>
 					<spanss>{{scheduler.user.task}}</span>
 					<span>{{scheduler.user.displayTime}}</span>
 					<span>{{scheduler.user.duration}} minutes</span>
 			</div>
 			
-
-			<div class="row">
+			<br>
+			<div class="row col-md-offset-1 col-md-10">
 				<table class="table table-bordered">
-					<thead class="text-center">
+					<thead>
 						<tr>
 							<th>Time</th>
 							<th>Duration</th>
