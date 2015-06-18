@@ -5,22 +5,26 @@
 angular.module('schedulerApp', [])
 .controller('SchedulerController', schedulerCtrl);
 
-	function schedulerCtrl() {
+	function schedulerCtrl($interval) {
 		var that = this;
 		that.plans = [
 		{
-			displayTime: '05:00 pm',
+			displayTime: '05:00pm',
 			duration: '30',
 			task: 'Team meeting',
 			standardTime: '1700'
 		},
 		{
-			displayTime: '06:00 pm',
+			displayTime: '06:00pm',
 			duration: '60',
 			task: 'Watch a js talk online',
 			standardTime: '1800'
 		},
 		];
+
+		//Creates a running time
+		var currentTime = Date.now();
+		$interval(function() {that.currentTime = Date.now();}, 1000);
 		
 	
 	function addNewTask() {
@@ -47,7 +51,7 @@ angular.module('schedulerApp', [])
 				console.log(input)
 			}
 			if((input.indexOf('pm') > -1) && (hoursInt < 12)) {
-				input = input.replace(hours, (hours + 12));
+				input = input.replace(hours, (+hours + 12));
 				console.log(input)
 			}
 			input = input.replace(':', '').trim();
@@ -62,19 +66,7 @@ angular.module('schedulerApp', [])
 		console.log(that.plans);
 }
 
-	/*function ping() {
-
-		this.clicked = !this.clicked;
-	}*/
-	//makes the done button turn green when clicked
-
-	/*function selectBtn(index) {
-		var that = this;
-		that.activeBtn = index;
-	}*/
-	that.addNewTask = addNewTask;
-	//that.ping = ping;
-	//that.selectBtn = selectBtn;
+		that.addNewTask = addNewTask;
 
 }
 
