@@ -27,16 +27,17 @@
 			<br>
 			<div class="row text-center">
 				<form name="addTaskForm" ng-submit="scheduler.addNewTask()">
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-3 col-md-offset-1">
 					<label for="task">Task:</label>
 					<input type="text" id="task" placeholder="Enter task here" ng-model="scheduler.user.task"></div>
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-3">
 					<label for="time">Time:</label>
 					<input class="newTime" placeholder="HH:mm am/pm" ng-model="scheduler.user.displayTime"></div>
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-3">
 					<label for ="duration">How Long?</label>
 					<input type="text" id="duration" placeholder="Enter time in minutes" ng-model="scheduler.user.duration"></div>
-					<input type="submit" class="btn btn-default" value="Submit Task">
+					<div class="col-md-1">
+					<input type="submit" class="btn btn-default" value="Submit Task"></div>
 				</form>
 			</div>
 			
