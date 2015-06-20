@@ -1,13 +1,12 @@
+$main-color: #009999;
+
 body {
-  background-color: #009999;
+  background-color: $main-color;
   color: #FFFFFF;
   
 }
 p {
   font-size: 20px;
-}
-input {
-	color: #000000 ;
 }
 .clock {
   font-size: 25px;
@@ -15,6 +14,6 @@ input {
 
 .jumbotron {
 	background-color: #FFFFFF;
-	color: #009999;
+	color: $main-color;
 	text-align:center;
 }
