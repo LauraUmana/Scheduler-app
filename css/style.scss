@@ -1,11 +1,20 @@
 body {
- color: #888888;
-  background-color: #FFFF99;
+  background-color: #009999;
+  color: #FFFFFF;
   
 }
 p {
   font-size: 20px;
 }
+input {
+	color: #000000 ;
+}
 .clock {
   font-size: 25px;
+}
+
+.jumbotron {
+	background-color: #FFFFFF;
+	color: #009999;
+	text-align:center;
 }
